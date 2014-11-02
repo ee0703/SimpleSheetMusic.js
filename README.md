@@ -20,6 +20,9 @@ Demo in Chnese: [中文版演示](http://blog.maxee.info/simplesheetmusic/exampl
     player.play(notes);
 ```
 
-See the [demo page](http://blog.maxee.info/) for more documents  
-中文版请看： [详细教程](http://192.168.174.130:4000/2014/11/01/play-music-with-pure-js/)
+See the [demo page](http://blog.maxee.info/simplesheetmusic/example_en.html) for more documents  
+  
+中文版请看： [详细教程](http://blog.maxee.info/2014/11/01/play-music-with-pure-js/)
+
+
 
