@@ -2,7 +2,8 @@ SimpleSheetMusic.js
 ===================
 
 Simple player that use pure javascript to play sheet music  
-Demo Page: [http://]()
+Demo Page: [http://blog.maxee.info/simplesheetmusic/example_en.html](http://blog.maxee.info/simplesheetmusic/example_en.html)  
+Demo in Chnese: [中文版演示](http://blog.maxee.info/simplesheetmusic/example_cn.html)
 
 ## Usage
 ### 1. include SimpleSheetMusic.js
@@ -20,5 +21,5 @@ Demo Page: [http://]()
 ```
 
 See the [demo page](http://blog.maxee.info/) for more documents  
-中文版请看： [演示页面]()，[详细教程]()
+中文版请看： [详细教程](http://192.168.174.130:4000/2014/11/01/play-music-with-pure-js/)
 
