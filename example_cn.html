@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>使用纯JS播放音乐</title>
+	<link type="text/css" rel="stylesheet" href="rainbow_alt.css">
+	<script src="rainbow-custom.min.js" type="text/javascript"></script>
+	<script src="SimpleSheetMusic.js"></script>
+	<script type="text/javascript">
+		function parse_Music_Sheet(notes,time){
+			
+		}
+		function play_sigle_note(note,time){
+			notes = [[note,time]];
+			play_notes(notes);
+		}
+		function play_notes(notes){
+			player = new simple_player();
+			player.play(notes);
+		}
+		function demo_func1(){
+			var notes = [['C4',1],['D4',1],['E4',1],['F4',1],['G4',1],['A4',1],['B4',1],['C5',1]];
+			//创建播放器
+			var player = new simple_player();
+			//播放
+			player.play(notes);
+		}
+		function demo_func13(){
+			var notes = [['E4',1],['E4',1],['E4',2],['E4',1],['E4',1],['E4',2],['E4',1],['G4',1],['C4',1.5],['D4',0.5],['E4',4]];
+			var player = new simple_player();
+			//播放速度(每分钟节拍数)
+			player.tempo = 360;
+			//音量(从0.0 ~ 1.0)
+			player.volume = 0.2;
+			player.play(notes);
+		}	
+		function demo_func2(){
+			var notes = [['A4',1],['B4',1],['C5',3],['B4',1],['C5',2],['E5',2],['B4',6],['E4',1],['E4',1],['A4',3],['G4',1],['A4',2],['C5',2],['G4',4],['0',2],['E4',1],['E4',1],['F4',3],['E4',1],['F4',1],['C5',3],['E4',4],['0',1],['C5',1],['C5',1],['C5',1],['B4',3],['F#4',1],['F#4',2],['B4',2],['B4',2]]; 
+			//创建播放器
+			var player = new simple_player();
+			player.tempo = 270;
+			//播放
+			player.play(notes);
+		}
+		function demo_func3(){
+			var notes = eval(document.getElementById("sheet_input").value );
+			play_notes(notes);
+		}
+	</script>
+</head>
+<body>
+<h1> SimpleSheetMusic.js示例   --使用纯JS播放音乐</h1>
+<h4>
+	<a href="https://www.github.com/">项目Github页面</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+	<a href="http://blog.maxee.info/">博客&说明</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+	<a href="example_en.html">English Version</a>
+</h4>
+<h3> >>>如何使用?</h3>
+
+<h4>1. 引用JS</h4>
+<pre><code data-language="javascript"><script src="SimpleSheetMusic.js"></script>
+</code></pre>
+
+<h4>2. 播放音符 <input type="button" value="点此运行" onclick="demo_func1()"/></h4>
+<pre><code data-language="javascript">var notes = [['C4',1],['D4',1],['E4',1],['F4',1],['G4',1],['A4',1],['B4',1],['C5',1]];
+//创建播放器
+var player = new simple_player();
+//播放
+player.play(notes);
+</code></pre>
+
+<h4>3. 属性设置 <input type="button" value="点此运行" onclick="demo_func13()"/></h4>
+<p>目前player只能设置'速度'和'音量'，正在考虑加入音色</p>
+<pre><code data-language="javascript">var notes = [['E4',1],['E4',1],['E4',2],['E4',1],['E4',1],['E4',2],['E4',1],['G4',1],['C4',1.5],['D4',0.5],['E4',1]];
+var player = new simple_player();
+
+//播放速度(每分钟节拍数) 默认120
+player.tempo = 360;
+
+//音量(从0.0 ~ 1.0) 默认0.7
+player.volume = 0.2;
+
+player.play(notes);
+</code></pre>
+
+<h3> >>>乐谱格式</h3>
+<p> 乐谱可以用数组来表示，<b>不区分大小写</b>，形式为[['音符名',持续拍子], ...],<b>休止符用0表示</b>,升号为<b>C#4</b>,降号为<b>Cb4</b>,如下所示: </p>
+<pre><code data-language="javascript">[['C4',2],['A4',1],['0',1],...]
+</code></pre>
+
+<p>以下是《天空之城》的一段示范  <input type="button" value="点此播放" onclick="demo_func2()"/>
+</p>
+<pre><code data-language="javascript">[
+	['A4',1],['B4',1],['C5',3],['B4',1],['C5',2],['E5',2],['B4',6],
+	['E4',1],['E4',1],['A4',3],['G4',1],['A4',2],['C5',2],['G4',4],
+	['0',2],['E4',1],['E4',1],['F4',3],['E4',1],['F4',1],['C5',3],['E4',4],
+	['0',1],['C5',1],['C5',1],['C5',1],['B4',3],['F#4',1],['F#4',2],['B4',2],['B4',2]
+] 
+</code></pre>
+
+<p>你也可以试试输入自己的乐谱:</p>
+<textarea style="width:600px;height:200px;" id ="sheet_input">
+[
+	['C4',1],['D4',1],['E4',1],['C4',1],
+	['C4',1],['D4',1],['E4',1],['C4',1],
+	['E4',1],['F4',1],['G4',2],
+	['G4',0.5],['A4',0.5],['G4',0.5],['F4',0.5],['E4',1],['C4',1],
+	['G4',0.5],['A4',0.5],['G4',0.5],['F4',0.5],['E4',1],['C4',1],
+	['D4',1],['G3',1],['C4',2],
+	['D4',1],['G3',1],['C4',2]
+]
+</textarea>
+<br>
+<input type="button" value="播放试试" onclick="demo_func3()"/>
+
+<br>
+<br>
+<h3> >>> 支持&帮助 </h3>
+<p>目前音色比较难听，我正在考虑加入简单的钢琴音色、和弦、多音轨的支持。项目还不是很完善，欢迎提供任何建议和帮助，也欢迎fork和pull源码(<a href="https://www.github.com/">github</a>)。</p>
+<p>E-mail: xiaoquan.vip@gmail.com</p>
+<h4>Any Help Will Be Aprreciated, Just for Fun !!!</h4>
+</body>
+</html>
+
