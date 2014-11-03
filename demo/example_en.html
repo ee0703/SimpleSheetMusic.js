@@ -3,10 +3,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>使用纯JS播放音乐</title>
+    <title>Using Pure Javascript to play Sheet Music</title>
 	<link type="text/css" rel="stylesheet" href="rainbow_alt.css">
 	<script src="rainbow-custom.min.js" type="text/javascript"></script>
-	<script src="simpleSheetMusic.js"></script>
+	<script src="../simpleSheetMusic.js"></script>
 	<script type="text/javascript">
 		function parse_Music_Sheet(notes,time){
 			
@@ -50,46 +50,46 @@
 	</script>
 </head>
 <body>
-<h1> SimpleSheetMusic.js示例   --使用纯JS播放音乐</h1>
+<h1> SimpleSheetMusic.js DEMO   --Using Pure Javascript to play Sheet Music</h1>
 <h4>
-	<a href="https://github.com/ee0703/SimpleSheetMusic.js">项目Github页面</a>&nbsp;&nbsp;/&nbsp;&nbsp;
-	<a href="http://blog.maxee.info/2014/11/01/play-music-with-pure-js/">博客&说明</a>&nbsp;&nbsp;/&nbsp;&nbsp;
-	<a href="example_en.html">English Version</a>
+	<a href="https://github.com/ee0703/SimpleSheetMusic.js">Project on Github</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+	<a href="http://blog.maxee.info/2014/11/01/play-music-with-pure-js/">Blog&Details</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+	<a href="example_cn.html">中文(Chinese)</a>
 </h4>
-<h3> >>>如何使用?</h3>
+<h3> >>>Usage</h3>
 
-<h4>1. 引用JS</h4>
-<pre><code data-language="javascript"><script src="SimpleSheetMusic.js"></script>
+<h4>1. import simpleSheetMusic.js</h4>
+<pre><code data-language="javascript"><script src="simpleSheetMusic.js"></script>
 </code></pre>
 
-<h4>2. 播放音符 <input type="button" value="点此运行" onclick="demo_func1()"/></h4>
+<h4>2. play sheet music <input type="button" value="click to run" onclick="demo_func1()"/></h4>
 <pre><code data-language="javascript">var notes = [['C4',1],['D4',1],['E4',1],['F4',1],['G4',1],['A4',1],['B4',1],['C5',1]];
-//创建播放器
+//create player
 var player = new simple_player();
-//播放
+//play sheet music
 player.play(notes);
 </code></pre>
 
-<h4>3. 属性设置 <input type="button" value="点此运行" onclick="demo_func13()"/></h4>
-<p>目前player只能设置'速度'和'音量'，正在考虑加入音色</p>
+<h4>3. properties <input type="button" value="click to run" onclick="demo_func13()"/></h4>
+<p>You can set 'tempo' and 'volume' properties, i'm now adding more properties like tone-colours.</p>
 <pre><code data-language="javascript">var notes = [['E4',1],['E4',1],['E4',2],['E4',1],['E4',1],['E4',2],['E4',1],['G4',1],['C4',1.5],['D4',0.5],['E4',1]];
 var player = new simple_player();
 
-//播放速度(每分钟节拍数) 默认120
+//Tempo(beats per min), 120 by default
 player.tempo = 360;
 
-//音量(从0.0 ~ 1.0) 默认0.7
+//vilume(0.0 ~ 1.0), 0.7 by default
 player.volume = 0.2;
 
 player.play(notes);
 </code></pre>
 
-<h3> >>>乐谱格式</h3>
-<p> 乐谱可以用数组来表示，<b>不区分大小写</b>，形式为[['音符名',持续拍子], ...],<b>休止符用0表示</b>,升号为<b>C#4</b>,降号为<b>Cb4</b>,如下所示: </p>
+<h3> >>> Format of the sheet music</h3>
+<p> Use Array to present notes，in format like: [['Name',beats], ...],<b>use '0' for pause</b>,sharp and flat should be :<b>C#4</b> or <b>Cb4</b>. Below is an example: </p>
 <pre><code data-language="javascript">[['C4',2],['A4',1],['0',1],...]
 </code></pre>
 
-<p>以下是《天空之城》的一段示范  <input type="button" value="点此播放" onclick="demo_func2()"/>
+<p>Here's a sample for main theme of《Castle in the sky》 <input type="button" value="click to play" onclick="demo_func2()"/>
 </p>
 <pre><code data-language="javascript">[
 	['A4',1],['B4',1],['C5',3],['B4',1],['C5',2],['E5',2],['B4',6],
@@ -99,7 +99,7 @@ player.play(notes);
 ] 
 </code></pre>
 
-<p>你也可以试试输入自己的乐谱:</p>
+<p>You can also try it by input:</p>
 <textarea style="width:600px;height:200px;" id ="sheet_input">
 [
 	['C4',1],['D4',1],['E4',1],['C4',1],
@@ -112,14 +112,14 @@ player.play(notes);
 ]
 </textarea>
 <br>
-<input type="button" value="播放试试" onclick="demo_func3()"/>
+<input type="button" value="click to play" onclick="demo_func3()"/>
 
 <br>
 <br>
-<h3> >>> 支持&帮助 </h3>
-<p>目前音色比较难听，我正在考虑加入简单的钢琴音色、和弦、多音轨的支持。项目还不是很完善，欢迎提供任何建议和帮助，也欢迎fork和pull源码(<a href="https://github.com/ee0703/SimpleSheetMusic.js">github</a>)。</p>
+<h3> >>> Supoort&Help </h3>
+<p>I'm now adding more properties like tune-color of piano,chords,multi-tracks。The player works not so proper now, and welcom to offer any advice and help.Any contribute will be aprreciated ,just fork send me pull request(<a href="https://github.com/ee0703/SimpleSheetMusic.js">github</a>)。</p>
 <p>E-mail: xiaoquan.vip@gmail.com</p>
-<h4>Any Help Will Be Aprreciated, Just for Fun !!!</h4>
+<h4>By <a href='https://github.com/ee0703'>EE</a> ,Just for Fun !!!</h4>
 </body>
 </html>
 
