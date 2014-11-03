@@ -168,8 +168,55 @@ function simple_player(){
 		//连接到硬件
 		this.volumeNode.connect(g_audioContext.destination);
 		this.oscillator.connect(this.volumeNode);
-		//方波音色
-		this.oscillator.type = 'triangle' ;
+	}
+
+	//私有函数--音色（谐音列）
+	function addtunecolor(player_obj,tune_time)
+	{
+		var freq = player_obj.oscillator.frequency.value;
+		var volume = player_obj.volume;
+
+		//频率有效性检测
+		if(freq<20||freq>20000) return;
+
+		var s_node = function(volume,frequency)
+		{
+			this.vn = g_audioContext.createGain();
+			this.vn.connect(g_audioContext.destination);
+			this.vn.gain.value = volume;
+
+			this.o = g_audioContext.createOscillator();
+			this.o.frequency.value = frequency;
+			this.o.connect(this.vn);
+
+			this.stop = function(){ this.o.stop(); };
+			this.start = function(){ this.o.start();};
+		}
+
+		this.tune_nodes = []; //谐音列
+
+		//谐音列参数
+		var h_tune_volume = [0.30,0.16,0.24,0.10,0.08,0.06,0.16];
+		var l_tune_volume = [0.36,0.12,0.30,0.10,0.08,0.06,0.12];
+
+		//高音序列
+		for(var i=2; i <= 8 ;i++)
+		{
+			this.tune_nodes.push(new s_node(h_tune_volume[i-2]*volume, i*freq) );
+		}
+
+		//低音序列
+		for(var i=2; i <= 8 ;i++)
+		{
+			this.tune_nodes.push(new s_node(h_tune_volume[i-2]*volume,(freq/i) ));
+		}
+
+		for(var i = 0;i < this.tune_nodes.length; i++)
+		{
+			this.tune_nodes[i].start();
+			setTimeout(function(obj){obj.stop();},tune_time,this.tune_nodes[i]);
+			fadeout(this.tune_nodes[i].vn,this.tune_nodes[i].vn.gain.value,tune_time);
+		}
 	}
 
 	//私有函数--音量淡出
@@ -215,10 +262,11 @@ function simple_player(){
 	  				}
 	  				//更改频率
 	  				player_obj.oscillator.frequency.value = notes_table[music_note];
+	  				//音量淡出效果
+	  				fadeout(player_obj.volumeNode,0,last);
+	  				addtunecolor(player_obj,last);
 	  			}
 	  			i++;
-  				//音量淡出效果
-  				fadeout(player_obj.volumeNode,player_obj.volume,last);
 	  			//音符持续时间后，调用自己进行下一个音符
 	  			setTimeout(arguments.callee,last,sheet_music,player_obj);
 	  		}else{
