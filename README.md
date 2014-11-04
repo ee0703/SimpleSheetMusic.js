@@ -8,7 +8,7 @@ Demo in Chnese: [中文版演示](http://blog.maxee.info/simplesheetmusic/exampl
 ## Usage
 ### 1. include SimpleSheetMusic.js
 ``` javascript
-    <script src="SimpleSheetMusic.js"></script>
+    <script src="simpleSheetMusic.js"></script>
 ```
 
 ### 2. play sheet music
