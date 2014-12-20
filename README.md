@@ -24,5 +24,6 @@ See the [demo page](http://blog.maxee.info/simplesheetmusic/example_en.html) for
   
 中文版请看： [详细教程](http://blog.maxee.info/2014/11/01/play-music-with-pure-js/)
 
-
+## License
+The MIT License (MIT)
 
